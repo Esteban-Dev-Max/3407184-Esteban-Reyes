@@ -28,7 +28,50 @@ const {
   name,
   description,
   code,
-  location,
+  location: farmLocation,
   stages,
   stats
 } = traceabilityData;
+
+// ===============================
+// Renderizar información en pantalla
+// ===============================
+
+const infoSection = document.getElementById('info');
+const stagesSection = document.getElementById('stages');
+const statsSection = document.getElementById('stats');
+
+// Información principal
+infoSection.innerHTML = `
+  <h2>${name}</h2>
+  <p>${description}</p>
+  <p><strong>Código:</strong> ${code}</p>
+  <p><strong>Finca:</strong> ${location.farm}</p>
+  <p><strong>Región:</strong> ${location.region}</p>
+`;
+
+// Lista de etapas
+stagesSection.innerHTML = `
+  <h3>Etapas del Cultivo</h3>
+  <ul>
+    ${stages.map(stage => `
+      <li>${stage.name} - ${stage.progress}%</li>
+    `).join('')}
+  </ul>
+`;
+
+// Estadísticas
+statsSection.innerHTML = `
+  <h3>Estadísticas</h3>
+  <p><strong>Total Cosechado:</strong> ${stats.totalHarvestKg} kg</p>
+  <p><strong>Calidad:</strong> ${stats.qualityScore}</p>
+  <p><strong>Inspecciones:</strong> ${stats.inspections}</p>
+`;
+
+const toggleBtn = document.getElementById('toggleBtn');
+const extraInfo = document.getElementById('extraInfo');
+
+toggleBtn.addEventListener('click', () => {
+  extraInfo.classList.toggle('hidden');
+});
+
