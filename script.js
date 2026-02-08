@@ -1,12 +1,10 @@
 // ===============================
 // Dominio #82 - Sistema de Trazabilidad Agrícola
-// Entidad principal: Lote Agrícola
 // ===============================
 
 const traceabilityData = {
   name: 'Lote de Café Premium',
-  description:
-    'Sistema de trazabilidad agrícola para el seguimiento del cultivo desde la siembra hasta la cosecha.',
+  description: 'Sistema de trazabilidad agrícola para el seguimiento del cultivo desde la siembra hasta la cosecha.',
   code: 'AGRO-082',
   location: {
     farm: 'Finca El Progreso',
@@ -25,7 +23,7 @@ const traceabilityData = {
 };
 
 // ===============================
-// Desestructuración de datos
+// Desestructuración
 // ===============================
 
 const {
@@ -38,28 +36,22 @@ const {
 } = traceabilityData;
 
 // ===============================
-// PASO 4 - Cálculo de estadísticas
+// Estadísticas (map / filter / reduce)
 // ===============================
 
-// Progreso promedio
-const progressValues = stages.map(stage => stage.progress);
-
-const averageProgress =
-  progressValues.reduce((acc, value) => acc + value, 0) /
-  progressValues.length;
-
-// Etapas completadas
 const completedStages = stages.filter(stage => stage.progress === 100);
 
+const averageProgress =
+  stages.reduce((acc, stage) => acc + stage.progress, 0) / stages.length;
+
 // ===============================
-// PASO 3 - Renderizar información
+// Renderizar información
 // ===============================
 
 const infoSection = document.getElementById('info');
 const stagesSection = document.getElementById('stages');
 const statsSection = document.getElementById('stats');
 
-// Información principal
 infoSection.innerHTML = `
   <h2>${name}</h2>
   <p>${description}</p>
@@ -68,19 +60,15 @@ infoSection.innerHTML = `
   <p><strong>Región:</strong> ${farmLocation.region}</p>
 `;
 
-// Lista de etapas
 stagesSection.innerHTML = `
   <h3>Etapas del Cultivo</h3>
   <ul>
-    ${stages
-      .map(
-        stage => `<li>${stage.name} - ${stage.progress}%</li>`
-      )
-      .join('')}
+    ${stages.map(stage => `
+      <li>${stage.name} - ${stage.progress}%</li>
+    `).join('')}
   </ul>
 `;
 
-// Estadísticas
 statsSection.innerHTML = `
   <h3>Estadísticas</h3>
   <p><strong>Total Cosechado:</strong> ${stats.totalHarvestKg} kg</p>
@@ -91,14 +79,40 @@ statsSection.innerHTML = `
 `;
 
 // ===============================
-// Interactividad - Mostrar / Ocultar
+// Interactividad
 // ===============================
 
+// Mostrar / Ocultar
 const toggleBtn = document.getElementById('toggleBtn');
 const extraInfo = document.getElementById('extraInfo');
 
 toggleBtn.addEventListener('click', () => {
   extraInfo.classList.toggle('hidden');
 });
+
+// Cambiar tema
+const themeBtn = document.getElementById('themeBtn');
+
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+});
+
+// Copiar información + notificación
+const copyBtn = document.getElementById('copyBtn');
+
+copyBtn.addEventListener('click', () => {
+  const textToCopy = `
+${name}
+Código: ${code}
+Finca: ${farmLocation.farm}
+Región: ${farmLocation.region}
+Progreso promedio: ${averageProgress.toFixed(2)}%
+`;
+
+  navigator.clipboard.writeText(textToCopy);
+  alert('Información copiada al portapapeles');
+});
+
+
 
 
