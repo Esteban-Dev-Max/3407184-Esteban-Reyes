@@ -1,24 +1,28 @@
-# Agricultural Traceability System
+# Proyecto Semana 03 - Calculadora de Dominio
 
-## Overview
-Web application developed using ES2023 classes and Object-Oriented Programming principles.
+## Dominio
+Sistema de Trazabilidad Agrícola
 
-## Concepts Applied
-- Abstract class (AgriculturalItem)
-- Inheritance (CropBatch, FertilizerApplication, PestControlRecord)
-- Encapsulation (#private fields)
-- Getters and Setters with validation
-- Static block configuration
-- CRUD operations
-- DOM integration
+## Descripción
+Este proyecto implementa una calculadora aplicada al dominio agrícola.
 
-## Features
-- Create agricultural records
-- Activate / Deactivate items
-- Delete items
-- Search by name
-- Filter by type
-- Statistics display
+El objetivo es realizar diferentes cálculos relacionados con la producción de un lote de cultivo dentro de un sistema de trazabilidad agrícola.
 
-## Version
-1.0.0
+La calculadora permite calcular:
+
+- Producción total
+- Ingresos por venta
+- Promedio de producción
+- Costos acumulados
+- Validaciones de exportación
+- Condiciones de venta
+
+## Conceptos aplicados
+
+- Operadores aritméticos (+, -, *, /, %)
+- Operadores de asignación compuesta (+=)
+- Comparaciones estrictas (===, >=)
+- Operadores lógicos (&&, ||, !)
+- Numeric separators para mejorar la lectura de números grandes
+
+## Cómo ejecutar
