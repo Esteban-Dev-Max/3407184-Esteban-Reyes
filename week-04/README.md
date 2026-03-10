@@ -1,19 +1,32 @@
-# AgroTrace Manager - Modular ES6 System
+# Proyecto Semana 04 — Generador de Mensajes de Dominio
 
-## Description
-Agricultural Traceability Management System built with ES6 Modules, destructuring and dynamic imports.
+## Dominio
+Sistema de Trazabilidad Agrícola
 
-## Features
-- CRUD operations
-- Categories
-- Search filter
-- LocalStorage persistence
-- Lazy loaded reports
-- Barrel exports
-- Named and default exports
-- Destructuring throughout the project
+## Objetivo
+Construir un generador de mensajes en consola que muestre información sobre un lote agrícola utilizando métodos de string y template literals.
 
-## Technologies
-- ES6 Modules
-- Dynamic Import
-- LocalStorage API
+## Métodos de String Utilizados
+
+- trim()
+- toUpperCase()
+- includes()
+- startsWith()
+- slice()
+- replace()
+
+## Funcionamiento
+
+El programa:
+
+1. Declara información del lote agrícola como strings.
+2. Utiliza métodos de string para limpiar, analizar y modificar los textos.
+3. Realiza validaciones sobre el código de trazabilidad y la descripción.
+4. Genera una ficha informativa multilínea.
+5. Genera un mensaje corto de notificación del sistema.
+
+## Ejecución
+
+Ejecutar el programa con:
+
+node starter/script.js
